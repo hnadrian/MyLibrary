@@ -15,7 +15,20 @@
     <div class="bookshelf"></div>
     <button id="new-book-button">+</button>
     <form id="new-book-form">
-      
+      <label for="book-title">Title:</label>
+      <input type="text" id="title-input" name="book-title"><br></br>
+      <label for="author">Author:</label>
+      <input type="text" id="author-input" name="author"><br></br>
+      <label for="year">Year:</label>
+      <input type="year" id="year-input" name="year"><br></br>
+      <label for="read-status">
+        Have you read the book?
+        <select name="read-status" id="read-status-input">
+          <option value="">---</option>
+          <option value="">Yes</option>
+          <option value="">No</option>
+        </select>
+      </label>
     </form>
     <footer class="info"></footer>
     <script src="script.js"></script>
