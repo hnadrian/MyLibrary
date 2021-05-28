@@ -19,19 +19,17 @@
         <form id="new-book-form">
           <label id='form-title'>Add New book</label><br></br>
           <label for="book-title">Title:</label><br></br>
-          <input type="text" id="title-input" name="book-title"><br></br>
+          <input type="text" id="title-input" name="book-title" required><br></br>
           <label for="author">Author:</label><br></br>
           <input type="text" id="author-input" name="author"><br></br>
           <label for="year">Year:</label><br></br>
           <input type="year" id="year-input" name="year"><br></br>
-          <label for="read-status">
-            Have you read the book?
-            <select name="read-status" id="read-status-input">
-              <option value="">---</option>
-              <option value="">Yes</option>
-              <option value="">No</option>
-            </select>
-          </label><br></br>
+          <label for="read-status">Have you read the book?</label>
+          <input type="radio" value="yes" name="read-status" id="read-button">
+          <label for="yes">Yes</label>
+          <input type="radio" value="no" name="read-status" id="not-read-button" checked="checked">
+          <label for="no">No</label>
+          <br></br>
           <button id="submit-button">Submit</button>
         </form>
       </div>
