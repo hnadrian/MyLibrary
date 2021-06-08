@@ -4,7 +4,9 @@ const newBookButton = document.querySelector('#new-book-button');
 newBookButton.addEventListener('click', showForm);
 const newBookForm = document.querySelector('#new-book-form');
 
-function Book(title = 'Unknown Title', author = 'Unknown Author', pageNum = 0, isRead = false) {
+const UNKOWN_VARIABLE = 'Unknown';
+
+function Book(title = UNKOWN_VARIABLE, author = UNKOWN_VARIABLE, pageNum = 0, isRead = false) {
     this.title = title;
     this.author = author;
     this.pageNum = pageNum;
@@ -12,7 +14,6 @@ function Book(title = 'Unknown Title', author = 'Unknown Author', pageNum = 0, i
 }
   
 function addBookToLibrary(newBook) {
-    
     myLibrary.push(newBook);
 }
 
