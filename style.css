@@ -7,11 +7,15 @@
     background-color: rbga(0, 0, 0, 0.5); 
     position: absolute;
     top: 0;
+    display: none;
 }
 
 .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 300px;
-    height: 300px;
+    height: 400px;
     background-color: gray;
     border-radius: 8px;
 }

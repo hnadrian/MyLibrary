@@ -3,6 +3,8 @@ let myLibrary = []
 const newBookButton = document.querySelector('#new-book-button');
 newBookButton.addEventListener('click', showForm);
 const newBookForm = document.querySelector('#new-book-form');
+const newBookFormModal = document.querySelector('.modal');
+const newBookFormModalBG = document.querySelector('.bg-modal');
 
 const UNKOWN_VARIABLE = 'Unknown';
 
@@ -19,15 +21,11 @@ function addBookToLibrary(newBook) {
 
 function showForm(e) {
     console.log('show form');
-    newBookForm.style.display = 'flex';
+    newBookFormModalBG.style.display = 'flex';
 }
 
 function hideForm(e) {
-    newBookForm.style.display = 'none';
-}
-
-function displayBooks() {
-
+    newBookFormModalBG.style.display = 'none';
 }
 
 function main() {
