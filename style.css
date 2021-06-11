@@ -1,3 +1,8 @@
+:root {
+    --form-width: 300px;
+    --form-length: 330px;
+}
+
 .bg-modal {
     display: flex;
     justify-content: center;
@@ -12,11 +17,18 @@
 
 .modal {
     display: flex;
-    width: 300px;
-    height: 400px;
+    justify-content: center;
+    align-items: center;
+    width: var(--form-width);
+    height: var(--form-length);
     background-color: gray;
     border-radius: 8px;
     position: relative;
+}
+
+#form-title {
+    display: flex;
+    justify-content: center;
 }
 
 form input[type="text"],
@@ -25,8 +37,13 @@ form input[type="year"]{
     width: 100%;
     box-sizing: border-box;
     padding: 0.2 em;
-    margin-bottom: 1.25rem;
-    margin-top: 1;
+    margin-bottom: 0.75rem;
+}
+
+.read-status-container {
+    display: block;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
 }
 
 #close-form-button {
@@ -34,3 +51,13 @@ form input[type="year"]{
     top: 5px;
     right: 10px;
 }
+
+#submit-button {
+    display: block;
+    width: 100%;
+}
+
+#close-form-button:hover {
+    cursor: pointer;
+}
+
