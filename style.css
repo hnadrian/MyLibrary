@@ -12,10 +12,25 @@
 
 .modal {
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: 300px;
     height: 400px;
     background-color: gray;
     border-radius: 8px;
+    position: relative;
+}
+
+form input[type="text"],
+form input[type="year"]{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2 em;
+    margin-bottom: 1.25rem;
+    margin-top: 1;
+}
+
+#close-form-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
