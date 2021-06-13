@@ -1,6 +1,8 @@
 :root {
     --form-width: 300px;
     --form-length: 260px;
+    --book-width: 180px;
+    --book-height: 120px;
 }
 
 #new-book-button {
@@ -76,14 +78,18 @@ form input[type="year"] {
     background-color: rgb(126, 236, 255);
 }
 
-.bookshelf-container {
+#bookshelf-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .book {
-    
     border: 2px red solid;
-    padding: 10px;
-    
+    background-color: antiquewhite;
+    width: var(--book-width);
+    height: var(--book-height);
+    padding: 5px;
+    margin: 5px;
 }
