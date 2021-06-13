@@ -40,24 +40,34 @@ function addNewBook(e) {
             document.querySelector('#read-button').checked
         );
         myLibrary.push(newBook);
-        addBookToDisplay(newBook);
+        displayBooks();
     }
     hideForm();
     console.log(myLibrary);
 }
 
-function addBookToDisplay(newBook) {
-    let newBookDiv = document.createElement('div');
-    newBookDiv.className = 'book';
-    let newBookTitle = document.createElement('h4');
-    newBookDiv.appendChild(newBookTitle);
-    newBookTitle.innerText = newBook.title;
-    let newBookReadStatus = (newBook.isRead) ? 'Finished' : 'Unfinished';
-    newBookDiv.innerHTML += 'by ' + newBook.author.italics() +  '<br />'
-        + 'Total pages: ' + newBook.pageNum + ' pgs' +  '<br />'
-        + 'Read status: ' + newBookReadStatus;
-    
-    bookshelf.appendChild(newBookDiv);
+function displayBooks() {
+    bookshelf.innerHTML = '';
+    myLibrary.forEach(function(book) {
+        let bookDiv = document.createElement('div');
+        bookDiv.className = 'book';
+        let bookTitle = document.createElement('h4');
+        bookTitle.innerText = book.title;
+        bookDiv.appendChild(bookTitle);
+        let bookReadStatus = (book.isRead) ? 'Finished' : 'Unfinished';
+        bookDiv.innerHTML += 'by ' + book.author.italics() + '<br />'
+            + 'Total pages: ' + book.pageNum + ' pgs' + '<br />'
+            + 'Read status: ' + bookReadStatus + '<br />';
+        let removeButton = document.createElement('button');
+        removeButton.innerHTML = 'Remove';
+        removeButton.addEventListener('click', removeBook);
+        let changeReadStatusButton = document.createElement('button');
+        changeReadStatusButton.innerHTML = 'Read';
+        changeReadStatusButton.addEventListener('click', changeReadStatus);
+        bookDiv.appendChild(removeButton);
+        bookDiv.appendChild(changeReadStatusButton);
+        bookshelf.appendChild(bookDiv);
+    });
 }
 
 function showForm(e) {
@@ -75,14 +85,35 @@ function handleForm(e) {
     e.preventDefault();
 }
 
+function changeReadStatus(e) {
+    let bookToBeChanged = findBook(e.target.parentElement.children[0].innerHTML);
+    bookToBeChanged.isRead = (bookToBeChanged.isRead) ? false : true;
+    displayBooks();
+}
+
+function removeBook(e) {
+    let bookToBeRemoved = findBook(e.target.parentElement.children[0].innerHTML);
+    console.log(myLibrary);
+    myLibrary = myLibrary.filter(book => book !== bookToBeRemoved);
+    displayBooks();
+}
+
+function findBook(bookTitle) {
+    let foundBook = null;
+    myLibrary.forEach(function(book) {
+        if (book.title === bookTitle) {
+            foundBook = book;
+        }
+    });
+    return foundBook;
+}
+
 function main() {
     let testBook1 = new Book('Harry Porter', 'Lady Bird',122, false);
     let testBook2 = new Book('The Greatest Book Of All', 'John Doe',6622, true);
     myLibrary.push(testBook1);
     myLibrary.push(testBook2);
-    addBookToDisplay(testBook1);
-    addBookToDisplay(testBook2);
-
+    displayBooks();
 }
 
 main()

@@ -33,7 +33,7 @@ h1 {
     align-items: center;
     width: var(--form-width);
     height: var(--form-length);
-    background-color: rgb(199, 235, 255);
+    background-color: rgb(212, 166, 65);
     border-radius: 8px;
     position: relative;
 }
@@ -75,7 +75,7 @@ form input[type="year"] {
 
 #seperator {
     height: 5px;
-    background-color: rgb(126, 236, 255);
+    background-color: rgb(255, 195, 126);
 }
 
 #bookshelf-container {
@@ -86,7 +86,7 @@ form input[type="year"] {
 }
 
 .book {
-    border: 2px red solid;
+    border: 2px rgb(255, 182, 87) solid;
     background-color: antiquewhite;
     width: var(--book-width);
     height: var(--book-height);
