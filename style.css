@@ -3,6 +3,7 @@
     --form-length: 260px;
     --book-width: 180px;
     --book-height: 120px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #new-book-button {
