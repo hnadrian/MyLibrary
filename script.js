@@ -43,7 +43,7 @@ function addNewBook(e) {
         displayBooks();
     }
     hideForm();
-    console.log(myLibrary);
+    populateStorage();
 }
 
 function displayBooks() {
@@ -71,7 +71,6 @@ function displayBooks() {
 }
 
 function showForm(e) {
-    console.log('show form');
     newBookFormModalBG.style.display = 'flex';
 }
 
@@ -89,13 +88,14 @@ function changeReadStatus(e) {
     let bookToBeChanged = findBook(e.target.parentElement.children[0].innerHTML);
     bookToBeChanged.isRead = (bookToBeChanged.isRead) ? false : true;
     displayBooks();
+    populateStorage();
 }
 
 function removeBook(e) {
     let bookToBeRemoved = findBook(e.target.parentElement.children[0].innerHTML);
-    console.log(myLibrary);
     myLibrary = myLibrary.filter(book => book !== bookToBeRemoved);
     displayBooks();
+    populateStorage();
 }
 
 function findBook(bookTitle) {
@@ -108,11 +108,16 @@ function findBook(bookTitle) {
     return foundBook;
 }
 
+function populateStorage() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
 function main() {
-    let testBook1 = new Book('Harry Porter', 'Lady Bird',122, false);
-    let testBook2 = new Book('The Greatest Book Of All', 'John Doe',6622, true);
-    myLibrary.push(testBook1);
-    myLibrary.push(testBook2);
+    if (!localStorage.getItem('myLibrary')) {
+        populateStorage();
+    } else {
+        myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+    }
     displayBooks();
 }
 
