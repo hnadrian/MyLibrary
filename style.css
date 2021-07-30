@@ -9,6 +9,18 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+    height: 40px;
+    width: 40px; 
+    background-color: #cfad4f; /* Green */
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.9em;
+    transition: transform .2s;
+}
+
+#new-book-button:hover {
+    transform: scale(1.1);
 }
 
 h1 {
