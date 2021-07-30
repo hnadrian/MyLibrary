@@ -21,7 +21,7 @@ const newBookFormModalBG = document.querySelector('.bg-modal');
 
 const bookshelf = document.querySelector('#bookshelf-container');
 
-
+const noBookDisplay = document.querySelector('#no-book-indicator')
 const UNKOWN_VARIABLE = 'Unknown';
 
 function Book(title, author, pageNum, isRead = false) {
@@ -44,6 +44,7 @@ function addNewBook(e) {
     }
     hideForm();
     populateStorage();
+    noBooksCheck();
 }
 
 function displayBooks() {
@@ -96,6 +97,7 @@ function removeBook(e) {
     myLibrary = myLibrary.filter(book => book !== bookToBeRemoved);
     displayBooks();
     populateStorage();
+    noBooksCheck();
 }
 
 function findBook(bookTitle) {
@@ -106,6 +108,14 @@ function findBook(bookTitle) {
         }
     });
     return foundBook;
+}
+
+function noBooksCheck() {
+    if (myLibrary.length == 0) {
+        noBookDisplay.style.display = 'block';
+    } else {
+        noBookDisplay.style.display = 'none';
+    }
 }
 
 function populateStorage() {
@@ -119,6 +129,7 @@ function main() {
         myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
     }
     displayBooks();
+    noBooksCheck();
 }
 
 main()

@@ -93,3 +93,11 @@ form input[type="year"] {
     padding: 5px;
     margin: 5px;
 }
+
+#no-book-indicator {
+    display: block;
+    text-align: center;
+    color: rgb(146, 146, 146);
+    font-size: 1.5em;
+
+}
