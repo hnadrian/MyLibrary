@@ -105,6 +105,7 @@ form input[type="year"] {
     height: var(--book-height);
     padding: 5px;
     margin: 5px;
+    min-width: 100px;
 }
 
 #no-book-indicator {
