@@ -61,7 +61,7 @@ function displayBooks() {
         bookDiv.appendChild(bookTitle);
         let bookReadStatus = (book.isRead) ? 'Finished' : 'Unfinished';
         bookDiv.innerHTML += 'by ' + book.author.italics() + '<br />'
-            + 'Total pages: ' + book.pageNum + ' pgs' + '<br />'
+            + 'Total pages: ' + book.pageNum + ' pages' + '<br />'
             + 'Read status: ' + bookReadStatus + '<br />';
         let removeButton = document.createElement('button');
         removeButton.innerHTML = 'Remove';
