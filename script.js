@@ -1,5 +1,8 @@
 let myLibrary = []
 
+const numBooks = document.querySelector('#num-books');
+const numBooksRead = document.querySelector('#num-books-read');
+
 const newBookButton = document.querySelector('#new-book-button');
 newBookButton.addEventListener('click', showForm);
 
@@ -40,6 +43,7 @@ function addNewBook(e) {
             document.querySelector('#read-button').checked
         );
         myLibrary.push(newBook);
+        updateStatistics(newBook, 'add');
         displayBooks();
     }
     hideForm();
@@ -90,6 +94,7 @@ function changeReadStatus(e) {
     bookToBeChanged.isRead = (bookToBeChanged.isRead) ? false : true;
     displayBooks();
     populateStorage();
+    updateStatistics(bookToBeChanged, 'change');
 }
 
 function removeBook(e) {
@@ -97,6 +102,7 @@ function removeBook(e) {
     myLibrary = myLibrary.filter(book => book !== bookToBeRemoved);
     displayBooks();
     populateStorage();
+    updateStatistics(bookToBeRemoved, 'remove');
     noBooksCheck();
 }
 
@@ -122,12 +128,30 @@ function populateStorage() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
 
+function updateStatistics(book, task) {
+    numBooks.innerHTML = myLibrary.length;
+    if (task === 'add' && book['isRead']) {
+        console.log(book['isRead']);
+        numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) + 1;
+    } else if (task === 'remove' && book['isRead']) {
+        numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) - 1;
+    } else if (task === 'change') {
+        if (book['isRead']) {
+            numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) + 1;
+        } else {
+            numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) - 1;
+        }
+    }
+}
+
 function main() {
     if (!localStorage.getItem('myLibrary')) {
         populateStorage();
     } else {
         myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
     }
+    numBooks.innerHTML = myLibrary.length;
+    numBooksRead.innerHTML = 0;
     displayBooks();
     noBooksCheck();
 }

@@ -51,6 +51,35 @@ h1 {
     position: relative;
 }
 
+#top-container {
+
+}
+
+#header-container {
+    float: left;
+    border: 5px solid blue;
+}
+
+#stats-container {
+    min-width: 200px;
+    float: right;
+    border: 5px solid blue;
+}
+
+h5{
+    line-height: 3px; 
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h4 {
+    text-align: center;
+}
+
+.clearfix {
+    clear: both;
+}
+
 #form-title {
     display: flex;
     justify-content: center;
