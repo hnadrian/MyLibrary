@@ -47,7 +47,7 @@ function addNewBook(e) {
         displayBooks();
     }
     hideForm();
-    populateStorage();
+    populateStorageLibrary();
     noBooksCheck();
 }
 
@@ -93,7 +93,7 @@ function changeReadStatus(e) {
     let bookToBeChanged = findBook(e.target.parentElement.children[0].innerHTML);
     bookToBeChanged.isRead = (bookToBeChanged.isRead) ? false : true;
     displayBooks();
-    populateStorage();
+    populateStorageLibrary();
     updateStatistics(bookToBeChanged, 'change');
 }
 
@@ -101,7 +101,7 @@ function removeBook(e) {
     let bookToBeRemoved = findBook(e.target.parentElement.children[0].innerHTML);
     myLibrary = myLibrary.filter(book => book !== bookToBeRemoved);
     displayBooks();
-    populateStorage();
+    populateStorageLibrary();
     updateStatistics(bookToBeRemoved, 'remove');
     noBooksCheck();
 }
@@ -124,14 +124,25 @@ function noBooksCheck() {
     }
 }
 
-function populateStorage() {
+function populateStorageLibrary() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function populateStorageBooksRead() {
+    localStorage.setItem('numBooksRead', numBooksRead.innerHTML);
+}
+
+function countReadBooks() {
+    let counter = 0;
+    myLibrary.forEach(function(book) {
+        if (book['isRead']) counter++;
+    });
+    return counter;
 }
 
 function updateStatistics(book, task) {
     numBooks.innerHTML = myLibrary.length;
     if (task === 'add' && book['isRead']) {
-        console.log(book['isRead']);
         numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) + 1;
     } else if (task === 'remove' && book['isRead']) {
         numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) - 1;
@@ -142,18 +153,23 @@ function updateStatistics(book, task) {
             numBooksRead.innerHTML = parseInt(numBooksRead.innerHTML) - 1;
         }
     }
+    populateStorageBooksRead();
 }
 
 function main() {
     if (!localStorage.getItem('myLibrary')) {
-        populateStorage();
+        populateStorageLibrary();
     } else {
         myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
     }
     numBooks.innerHTML = myLibrary.length;
-    numBooksRead.innerHTML = 0;
+    if (!localStorage.getItem('numBooksRead')) {
+        numBooksRead.innerHTML = localStorage.getItem('numBooksRead');
+    } else {
+        numBooksRead.innerHTML = countReadBooks();
+    }
     displayBooks();
     noBooksCheck();
 }
 
-main()
+main();
