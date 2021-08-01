@@ -56,21 +56,42 @@ function displayBooks() {
     myLibrary.forEach(function(book) {
         let bookDiv = document.createElement('div');
         bookDiv.className = 'book';
+        let bookTitleContainer = document.createElement('div');
+        bookTitleContainer.className = 'book-title-container';
         let bookTitle = document.createElement('h4');
         bookTitle.innerText = book.title;
-        bookDiv.appendChild(bookTitle);
+        bookTitleContainer.appendChild(bookTitle);
+        bookDiv.appendChild(bookTitleContainer);
+        let bookInfoContainer = document.createElement('div');
+        bookInfoContainer.className = 'book-info-container';
+        let authorInfo = document.createElement('p1');
+        authorInfo.innerHTML = 'by ' + book.author.italics();
+        let numPageInfo = document.createElement('p1');
+        numPageInfo.innerHTML = 'Total pages: ' + book.pageNum + ' pages';
+        let readStatusInfo = document.createElement('p1');
         let bookReadStatus = (book.isRead) ? 'Finished' : 'Unfinished';
-        bookDiv.innerHTML += 'by ' + book.author.italics() + '<br />'
-            + 'Total pages: ' + book.pageNum + ' pages' + '<br />'
-            + 'Read status: ' + bookReadStatus + '<br />';
+        let readStatusSpan = document.createElement('span');
+        readStatusSpan.className = (book.isRead) ? 'read-status-span-finished' : 'read-status-span-unfinished';
+        readStatusSpan.innerHTML = bookReadStatus;
+        readStatusInfo.innerHTML = 'Read Status: ';
+        readStatusInfo.appendChild(readStatusSpan);
+        
+        bookInfoContainer.appendChild(authorInfo);
+        bookInfoContainer.appendChild(numPageInfo)
+        bookInfoContainer.appendChild(readStatusInfo);
+        bookDiv.appendChild(bookInfoContainer);
+        
         let removeButton = document.createElement('button');
         removeButton.innerHTML = 'Remove';
         removeButton.addEventListener('click', removeBook);
         let changeReadStatusButton = document.createElement('button');
         changeReadStatusButton.innerHTML = 'Read';
         changeReadStatusButton.addEventListener('click', changeReadStatus);
-        bookDiv.appendChild(removeButton);
-        bookDiv.appendChild(changeReadStatusButton);
+        let bookButtonsContainer = document.createElement('div');
+        bookButtonsContainer.className = 'book-buttons-container';
+        bookButtonsContainer.appendChild(removeButton);
+        bookButtonsContainer.appendChild(changeReadStatusButton);
+        bookDiv.appendChild(bookButtonsContainer);
         bookshelf.appendChild(bookDiv);
     });
 }
@@ -90,15 +111,15 @@ function handleForm(e) {
 }
 
 function changeReadStatus(e) {
-    let bookToBeChanged = findBook(e.target.parentElement.children[0].innerHTML);
-    bookToBeChanged.isRead = (bookToBeChanged.isRead) ? false : true;
+    let bookToBeChanged = findBook(e.target.parentElement.parentElement.children[0].children[0].innerHTML);
+    bookToBeChanged.isRead = !(bookToBeChanged.isRead); //TODO: make sure negate working
     displayBooks();
     populateStorageLibrary();
     updateStatistics(bookToBeChanged, 'change');
 }
 
 function removeBook(e) {
-    let bookToBeRemoved = findBook(e.target.parentElement.children[0].innerHTML);
+    let bookToBeRemoved = findBook(e.target.parentElement.parentElement.children[0].children[0].innerHTML);
     myLibrary = myLibrary.filter(book => book !== bookToBeRemoved);
     displayBooks();
     populateStorageLibrary();
