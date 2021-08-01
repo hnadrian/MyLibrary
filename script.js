@@ -45,10 +45,11 @@ function addNewBook(e) {
         myLibrary.push(newBook);
         updateStatistics(newBook, 'add');
         displayBooks();
+
+        hideForm();
+        populateStorageLibrary();
+        noBooksCheck();
     }
-    hideForm();
-    populateStorageLibrary();
-    noBooksCheck();
 }
 
 function displayBooks() {
@@ -97,11 +98,14 @@ function displayBooks() {
 }
 
 function showForm(e) {
-    newBookFormModalBG.style.display = 'flex';
+    newBookFormModalBG.classList.add('active');
+    newBookFormModal.classList.add('active');
+    console.log(newBookFormModal.classList);
 }
 
 function hideForm(e) {
-    newBookFormModalBG.style.display = 'none';
+    newBookFormModalBG.classList.remove('active');
+    newBookFormModal.classList.remove('active');
     newBookForm.reset(); //Error not focusable
 }
 
