@@ -3,14 +3,14 @@
     --form-length: 260px;
     --book-width: 180px;
     --book-height: 220px;
-    --top-color: #00c3dd;
+    --top-color: #005485;
     --title-color: white;
     --seperator-color: #2E71B0;
     --bookshelf-color: #F0F0F0;
     --book-color: #F6F6F6;
     --book-border-color: #A3A3A3;
     --new-button-color: #2E71B0;
-    --form-color: rgb(203, 238, 240);
+    --form-color: rgb(203, 223, 240);
     --finished-color: rgb(0, 124, 0);
     --unfinished-color: rgb(212, 146, 4);
     --border-radius: 10px;
