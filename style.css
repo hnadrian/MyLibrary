@@ -3,14 +3,14 @@
     --form-length: 260px;
     --book-width: 180px;
     --book-height: 220px;
-    --top-color: #61C2D3;
+    --top-color: #00c3dd;
     --title-color: white;
-    --seperator-color: rgb(255, 195, 126);
+    --seperator-color: #2E71B0;
     --bookshelf-color: #F0F0F0;
     --book-color: #F6F6F6;
     --book-border-color: #A3A3A3;
-    --new-button-color: #61C2D3;
-    --form-color: rgb(243, 184, 107);
+    --new-button-color: #2E71B0;
+    --form-color: rgb(203, 238, 240);
     --finished-color: rgb(0, 124, 0);
     --unfinished-color: rgb(212, 146, 4);
     --border-radius: 10px;
@@ -66,7 +66,10 @@ div {
     float: left;
     width: 100%;
     color: var(--title-color);
+    background: url(images/book-background.jpeg);
+    background-size: cover;
     background-color: var(--top-color);
+    background-blend-mode: darken;
     border-radius: var(--border-radius) var(--border-radius) 0px 0px;
 }
 
@@ -77,11 +80,13 @@ div {
     display:flex;
     align-items: center;
     justify-content: center;
+    text-shadow: 0px 0px 5px #000000;
 }
 
 #stats-container {
     float: right;
     min-width: 200px;
+    text-shadow: 0px 0px 5px #000000;
 }
 
 h5{
