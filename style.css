@@ -40,15 +40,20 @@ div {
 }
 
 .bg-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rbga(0, 0, 0, 0.5); 
+    background-color: rgba(255, 255, 255, 0);
     position: absolute;
     top: 0;
-    display: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    pointer-events: none;
+}
+
+.bg-modal.active {
+    background-color: rgba(255, 255, 255, 0.7);
+    pointer-events: all;
 }
 
 .modal {
@@ -60,6 +65,12 @@ div {
     background-color: var(--form-color);
     border-radius: 8px;
     position: relative;
+    transform: scale(0);
+    transition: 300ms ease-in-out;
+}
+
+.modal.active {
+    transform: scale(1);
 }
 
 #top-container {
