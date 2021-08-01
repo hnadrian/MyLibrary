@@ -208,4 +208,8 @@ p1 {
     text-align: center;
     color: rgb(146, 146, 146);
     font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 300px;
 }
