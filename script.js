@@ -83,9 +83,11 @@ function displayBooks() {
         bookDiv.appendChild(bookInfoContainer);
         
         let removeButton = document.createElement('button');
+        removeButton.className = 'remove-button';
         removeButton.innerHTML = 'Remove';
         removeButton.addEventListener('click', removeBook);
         let changeReadStatusButton = document.createElement('button');
+        changeReadStatusButton.className = 'change-read-status-button';
         changeReadStatusButton.innerHTML = 'Read';
         changeReadStatusButton.addEventListener('click', changeReadStatus);
         let bookButtonsContainer = document.createElement('div');

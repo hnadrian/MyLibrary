@@ -143,6 +143,9 @@ form input[type="year"] {
 #submit-button {
     display: block;
     width: 100%;
+    border: none;
+    color: white;
+    background-color: #2E71B0;
 }
 
 #close-form-button:hover {
@@ -177,11 +180,11 @@ p1 {
     padding: 10px;
     margin: 5px;
     min-width: 100px;
-    transition: transform .2s;
+    transition: .2s;
 }
 
 .book:hover {
-    transform: scale(1.01);
+    border-color: #2E71B0;
 }
 
 .book-title-container {
@@ -198,6 +201,20 @@ p1 {
     left: 0px;
     right: 0px;
     top: 200px;
+}
+
+.remove-button {
+    border: none;
+    background-color: #2E71B0;
+    color: white;
+    margin: 2px;
+}
+
+.change-read-status-button {
+    border: none;
+    background-color: #2E71B0;
+    color: white;
+    margin: 2px;
 }
 
 .read-status-span-finished {
