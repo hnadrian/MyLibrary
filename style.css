@@ -177,6 +177,11 @@ p1 {
     padding: 10px;
     margin: 5px;
     min-width: 100px;
+    transition: transform .2s;
+}
+
+.book:hover {
+    transform: scale(1.01);
 }
 
 .book-title-container {
